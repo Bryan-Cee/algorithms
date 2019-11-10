@@ -1,2 +1,2 @@
-# algorithms
+# Algorithms
 Algorithms for interview questions
