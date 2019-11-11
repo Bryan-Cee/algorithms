@@ -13,7 +13,7 @@ def get_permutations(string):
             for l in get_permutations(rest):
                 new_list.append(first + l)
         return set(new_list)
-    
+
 
 # Tests
 
