@@ -9,13 +9,18 @@ const uniqueOccurrences = function (arr) {
         const element = arr[index];
         if(hash[element]){
             hash[element] += 1;
-            console.log(hash[element]);
         } else{
             hash[element] = 1;
         }
     }
-    console.log(hash)
+    
+    const occuerrences = new Set(Object.values(hash));
+    const keys = Object.keys(hash)
+    if (occuerrences.size === keys.length){
+        return true;
+    }
+
     return false;
 };
 
-console.log(uniqueOccurrences([1, 2, 2, 1, 1, 3]));
+console.log(uniqueOccurrences([1, 2, 2, 2, 1, 1, 3]));
