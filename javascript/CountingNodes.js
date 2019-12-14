@@ -4,6 +4,8 @@ function Node(val) {
 }
 
 function sizeOfBT(head){
+    // Using breadth first search traversal 
+    // Iterative solution
     let queue = [head];
     let seen = new Set();
     let count = 0;
