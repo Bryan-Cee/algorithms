@@ -14,9 +14,9 @@ const uniqueOccurrences = function (arr) {
         }
     }
     
-    const occuerrences = new Set(Object.values(hash));
+    const occurrences = new Set(Object.values(hash));
     const keys = Object.keys(hash)
-    if (occuerrences.size === keys.length){
+    if (occurrences.size === keys.length){
         return true;
     }
 
