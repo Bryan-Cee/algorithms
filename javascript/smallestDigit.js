@@ -8,7 +8,7 @@ function smallestDigit(n) {
   return v < 1 ? 0 : Math.pow(10, v);
 }
 
-const n = 1;
+const n = 12;
 
 const result = smallestDigit(n);
 

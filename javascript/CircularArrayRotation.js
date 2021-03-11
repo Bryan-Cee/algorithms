@@ -4,7 +4,9 @@ function circularArrayRotation(a, k, queries) {
     // pop then unshift
     for(let i = 0; i < k; ++i){
         const lastValue = a.pop();
+        console.log(lastValue)
         a.unshift(lastValue);
+        console.log(a)
     }
 
     let result = [];

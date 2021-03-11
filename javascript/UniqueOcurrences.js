@@ -4,23 +4,23 @@
  */
 
 const uniqueOccurrences = function (arr) {
-    let hash = {};
-    for (let index = 0; index < arr.length; index++) {
-        const element = arr[index];
-        if(hash[element]){
-            hash[element] += 1;
-        } else{
-            hash[element] = 1;
-        }
+  let hash = {};
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    if (hash[element]) {
+      hash[element] += 1;
+    } else {
+      hash[element] = 1;
     }
-    
-    const occurrences = new Set(Object.values(hash));
-    const keys = Object.keys(hash)
-    if (occurrences.size === keys.length){
-        return true;
-    }
+  }
 
-    return false;
+  const occurrences = new Set(Object.values(hash));
+  const keys = Object.keys(hash);
+  if (occurrences.size === keys.length) {
+    return true;
+  }
+
+  return false;
 };
 
-console.log(uniqueOccurrences([1, 2, 2, 2, 1, 1, 3]));
+console.log(uniqueOccurrences([1, 2, 2, 2, 1, 1, , 3]));

@@ -41,7 +41,6 @@ function uniquePairs(array) {
       pairs[value] = [key]
     }
   })
-
   return count;
 }
 
