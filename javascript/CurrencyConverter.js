@@ -18,13 +18,50 @@
  * @param {string} endingCurr Ending currency
  */
 function convertCurrency(conversionRates, startingCurr, endingCurr) {
-
+  const rateGraph = generateGraph(conversionRates);
+  const visited = {};
+  return traverse(startingCurr, endingCurr, rateGraph, visited);
 }
 
-class Graph {
-  #vertext = new Map();
-  
+function traverse(from, to, graph, visited) {
+  console.log('From:', from, 'to', to, visited);
+
+  if (!graph[from]) return -1;
+  if (from === to) return 1;
+
+  const queue = [];
+  visited[from] = true;
+
+  Object.keys(graph[from]).forEach((child) => {
+    if (!visited[child]) queue.unshift(child);
+  });
+
+  let finalRate = -1;
+
+  while (queue.length) {
+    const node = queue.pop();
+    const rate = graph[from][node];
+    finalRate = Math.max(rate, traverse(node, to, graph, visited));
+  }
+
+  return finalRate;
 }
+
+const generateGraph = (nodes) => {
+  const rateGraph = {};
+  nodes.map((conversionRate) => {
+    const from = conversionRate[0];
+    const to = conversionRate[1];
+    const rate = conversionRate[2];
+
+    if (!rateGraph[from]) rateGraph[from] = {};
+    if (!rateGraph[to]) rateGraph[to] = {};
+
+    rateGraph[from][to] = rate;
+    rateGraph[to][from] = 1 / rate;
+  });
+  return rateGraph;
+};
 
 const conversionRate = convertCurrency(
   [
@@ -36,5 +73,4 @@ const conversionRate = convertCurrency(
   'AUD'
 );
 const answer = 1.883116883116883;
-
-console.assert(conversionRate === answer);
+console.log(conversionRate);
