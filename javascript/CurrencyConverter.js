@@ -49,6 +49,7 @@ function traverse(from, to, graph, visited) {
 
 const generateGraph = (nodes) => {
   const rateGraph = {};
+
   nodes.map((conversionRate) => {
     const from = conversionRate[0];
     const to = conversionRate[1];
@@ -60,6 +61,8 @@ const generateGraph = (nodes) => {
     rateGraph[from][to] = rate;
     rateGraph[to][from] = 1 / rate;
   });
+  console.log({ rateGraph })
+
   return rateGraph;
 };
 
@@ -72,5 +75,7 @@ const conversionRate = convertCurrency(
   'GBP',
   'AUD'
 );
+
 const answer = 1.883116883116883;
+
 console.log(conversionRate);
